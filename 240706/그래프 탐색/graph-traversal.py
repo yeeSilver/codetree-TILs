@@ -21,4 +21,7 @@ def dfs(root):
             cnt +=1
             dfs(vertex)
 dfs(1)
-print(cnt - 1)
+if cnt == 0:
+    print(0)
+else:
+    print(cnt - 1)
