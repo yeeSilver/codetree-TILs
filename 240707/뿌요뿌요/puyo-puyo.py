@@ -24,21 +24,25 @@ def dfs(i,j,num):
     dxs,dys= [0,0,1,-1],[1,-1,0,0]
     for dx,dy in zip(dxs,dys):
         nx, ny = dx+i, dy+j
-        if can_go(nx,ny) and grid[nx][ny] == num:
-            visited[i][j] = True
+        if can_go(nx, ny) and grid[nx][ny] == num:
+            visited[nx][ny] = True
             area+=1
             dfs(nx,ny,num)
 
-cnt = 0
-max_area = 1
+bomb_cnt = 0
+max_area = -sys.maxsize
+
 for i in range(n):
     for j in range(n):
         if visited[i][j] == False:
-            visited[i][j] = True
+            visited[i][j]=True
             num = grid[i][j]
             area = 1
             dfs(i,j,num)
-            if 4 <= area: cnt+=1
-            if max_area < area : max_area = area
+            if 4 <= area:
+                bomb_cnt+=1
+            max_area = max(area,max_area)
+            # print(max_area)
 
-print(cnt, max_area)
+
+print(bomb_cnt, max_area)
