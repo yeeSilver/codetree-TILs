@@ -26,7 +26,7 @@ def can_go(i, j, k):
     return True
 
 def dfs(i,j,k):
-    dxs,dys = [0,0,1,-1],[1,-1,0,0]
+    dxs, dys = [0, 1, 0, -1], [1, 0, -1, 0]
     for dx,dy in zip(dxs,dys):
         nx,ny = i+dx, j+dy
         if can_go(nx,ny,k):
