@@ -51,8 +51,8 @@ ans_area, ans_k = -1,0
 
 for k in range(1,101):
     get_area(k)
-    if ans_area <= area:
+    if ans_area < area:
         ans_area = area
         ans_k = k
 
-print(ans_area, ans_k)
+print( ans_k, ans_area)
