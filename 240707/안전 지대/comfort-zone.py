@@ -47,7 +47,7 @@ def get_area(k):
                 area+=1
                 dfs(i,j,k) #여기서 한 군집을 거쳐가면 visited를 ture
 
-ans_area, ans_k = 0,0
+ans_area, ans_k = -1,0
 
 for k in range(1,101):
     get_area(k)
