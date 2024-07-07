@@ -45,7 +45,7 @@ def get_area(k):
             if can_go(i,j,k):
                 visited[i][j] = True
                 area+=1
-                dfs(i,j,k) #여기서 한 군집을 거쳐가면 visited를 ture
+                dfs(i,j,k) #여기서 한 군집을 거쳐가면 visited를 true
 
 ans_area, ans_k = -1,0
 
