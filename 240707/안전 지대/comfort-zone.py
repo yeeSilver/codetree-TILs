@@ -16,8 +16,10 @@ def initalized_visited():
         for j in range(m):
             visited[i][j] = False
 
-def in_range(i, j):
-    return 0 <= i < n and 0 <= j < m
+# def in_range(i, j):
+#     return 0 <= i < n and 0 <= j < m
+def in_range(x, y):
+    return 0 <= x and x < n and 0 <= y and y < m
 
 def can_go(i, j, k):
     if not in_range(i, j): return False
