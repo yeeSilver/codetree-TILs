@@ -34,6 +34,7 @@ max_area = 1
 for i in range(n):
     for j in range(n):
         if visited[i][j] == False:
+            visited[i][j] = True
             num = grid[i][j]
             area = 1
             dfs(i,j,num)
