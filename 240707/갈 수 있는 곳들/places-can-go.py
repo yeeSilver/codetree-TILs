@@ -7,43 +7,48 @@ grid=[
     for _ in range(n)
 ]
 visited=[
-    [False for _ in range(n)] for _ in range(n)
+    [0 for _ in range(n)] for _ in range(n)
 ]
 
 def in_range(r,c):
     return 0<=r<n and 0<=c<n
-def can_go(r,c):
+def can_go(r,c,k):
     if not in_range(r,c): return False
-    if visited[r][c]: return False
+    # print(r,c, visited[r][c])
+    if visited[r][c] == k: return False
     if grid[r][c] == 1: return False
     return True
 
-def bfs(x,y):
-    global area
-
-    dxs,dys= [0,0,-1,1],[1,-1,0,0]
-    for i in range(4):
-        nx = x+dxs[i]
-        ny = y+dys[i]
-        if can_go(nx,ny):
-            visited[nx][ny]=True
-            area+=1
-
+def bfs(k):
+    while q:
+        x,y = q.popleft()
+        dxs,dys= [0,0,-1,1],[1,-1,0,0]
+        for dx,dy in zip(dxs,dys):
+            nx = x+dx
+            ny = y+dy
+            if can_go(nx,ny,k):
+                visited[nx][ny]=k
+                q.append((nx,ny))
 def initalized():
     for i in range(n):
         for j in range(n):
             visited[i][j] = False
 
 area = 0
-for _ in range(k):
+for k in range(k):
     r,c = map(int,input().split())
     r-=1
     c-=1
 
     initalized()
 
-    if can_go(r,c):
-        visited[r][c]=True
-        area+=1
-        bfs(r,c)
+    if can_go(r,c,k):
+        visited[r][c]=k
+        q.append((r,c))
+        bfs(k)
+for i in range(n):
+    for j in range(n):
+        if visited[i][j] != 0:
+            area+=1
+# print(visited)
 print(area)
